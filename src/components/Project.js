@@ -3,7 +3,7 @@ import CriticalRaceImg from "../assets/CriticalRaceImg.png"
 import FinCheckerImg from "../assets/FinCheckerImg.png"
 import ToDoImg from "../assets/TodoImg.png"
 
-export default function Project() {
+function Project() {
     return (
         <section id="projects" className="projects">
             <div className="container">
@@ -31,3 +31,5 @@ function ProjectItem( {image, name, link }) {
         </a>
     );
 }
+
+export default Project;
