@@ -470,6 +470,7 @@ nav ul a:hover {
 .experience-content h1 {
   color: #147efb;
   font-size: 3rem;
+  font-weight: 300;
 }
 
 .experience-content h2 {
@@ -488,8 +489,12 @@ nav ul a:hover {
 }
 
 .experience-content h5 {
-  font-size: 1.8rem;
-  color: #4A4E69;
+  color: #2d2e32;
+  font-family: Mulish,sans-serif;
+  font-weight: 600;
+  margin-right: 7rem;
+  padding-right: 2rem;
+  font-size: 2rem;
 }
 
 
@@ -511,6 +516,14 @@ nav ul a:hover {
 
 .vertical-timeline-element-date {
   font-size: 20px !important;
+}
+
+.vertical-timeline-element-description {
+  color: #767676;
+  font-family: Mulish,sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .projects {
@@ -623,7 +636,7 @@ nav ul a:hover {
 }
 
 .contact-content h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .contact-info div {
@@ -635,6 +648,13 @@ nav ul a:hover {
   width: 3rem;
 }
 
-.contact-info {
-  display: inline;
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
+
+.contact-row div {
+  padding: 2rem 0 0 2rem;
+}
+

@@ -10,15 +10,15 @@ export default function Contact() {
                 <div className="contact-content">
                     <div className="contact-info">
                         <h1>Contact Me</h1>
-                        <div>
+                        <div className="contact-row">
                             <img src={location_svg} alt="contact_img"/>
                             <div className="contact-sub">Boston, Massachusetts</div>
                         </div>
-                        <div>
+                        <div className="contact-row">
                             <img src={phone_svg} alt="(contact_img)"/>
                             <div className="contact-sub">(646) 384-5349</div>
                         </div>
-                        <div>
+                        <div className="contact-row">
                             <img src={mail_svg} alt="contact_img"/>
                             <div className="contact-sub">wong.james2003@gmail.com</div>
                         </div>
@@ -26,6 +26,7 @@ export default function Contact() {
 
                     <div className="contact-form">
                         <h1>Reach Out</h1>
+                        
                     </div>
                 </div>
             </div>
