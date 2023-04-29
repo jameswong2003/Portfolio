@@ -1,7 +1,7 @@
 import React from "react";
 import location_svg from "../assets/svg/location-pin-svgrepo-com.svg";
 import phone_svg from "../assets/svg/phone-call-svgrepo-com.svg";
-import mail_svg from "../assets/svg/mail-svgrepo-com.svg";
+import mail_svg from "../assets/svg/email-svgrepo-com.svg";
 
 export default function Contact() {
     return (
