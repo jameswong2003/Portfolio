@@ -1,7 +1,8 @@
 import React from "react";
-import CriticalRaceImg from "../assets/CriticalRaceImg.png"
-import FinCheckerImg from "../assets/FinCheckerImg.png"
-import ToDoImg from "../assets/TodoImg.png"
+import CriticalRaceImg from "../assets/CriticalRaceImg.png";
+import FinCheckerImg from "../assets/FinCheckerImg.png";
+import ToDoImg from "../assets/TodoImg.png";
+import WeatherPlannerImg from "../assets/WeatherPlannerImg.png";
 
 function Project() {
     return (
@@ -14,6 +15,7 @@ function Project() {
                         <ProjectItem name="Critical Race Project" image={CriticalRaceImg} link={"https://github.com/jameswong2003/Critical-Race-Project"}/>
                         <ProjectItem name="FinChecker" image={FinCheckerImg} link={"https://github.com/jameswong2003/FinChecker"}/>
                         <ProjectItem name="To-Do Flask" image={ToDoImg} link={"https://github.com/jameswong2003/Flask-Introduction"} />
+                        <ProjectItem name="Weather Planner" image={WeatherPlannerImg} link={"https://github.com/jameswong2003/WeatherPlanner"} />
                     </div>
                 </div>
             </div>
