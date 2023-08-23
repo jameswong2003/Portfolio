@@ -1,10 +1,20 @@
 import hearst_logo from "../assets/hearst_logo.png"
 import kinship_logo from "../assets/kinship_logo.png"
 import tech360_logo from "../assets/tech360.png"
+import mgb_logo from "../assets/MGB_logo.png"
 
 let timelineElements = [
     {
         id: 1,
+        title: "Software/Data Engineer Intern",
+        date: "June 2023 - August 2023",
+        company: "Mass General Brigham",
+        description: "Initiated the development of a comprehensive Master Data Management (MDM) software using Streamlit, enabling seamless data integration, cleansing, and standardization for a wide range of enterprise datasets"
+        ,
+        icon: mgb_logo
+    },
+    {
+        id: 2,
         title: "Software Engineer Intern",
         date: "June 2022 - August 2022",
         company: "Hearst",
@@ -12,7 +22,7 @@ let timelineElements = [
         icon: hearst_logo
     },
     {
-        id: 2,
+        id: 3,
         title: "Campaign Intern",
         date: "June 2020 - August 2020",
         company: "CTE/Kinship",
@@ -20,7 +30,7 @@ let timelineElements = [
         icon: kinship_logo
     },
     {
-        id: 3,
+        id: 4,
         title: "TECH360 Fellowship",
         date: "June 2019 - August 2019",
         company: "America On Tech",
