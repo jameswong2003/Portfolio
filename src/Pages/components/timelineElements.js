@@ -1,7 +1,7 @@
-import hearst_logo from "../assets/hearst_logo.png"
-import kinship_logo from "../assets/kinship_logo.png"
-import tech360_logo from "../assets/tech360.png"
-import mgb_logo from "../assets/MGB_logo.png"
+import hearst_logo from "../../assets/hearst_logo.png"
+import kinship_logo from "../../assets/kinship_logo.png"
+import tech360_logo from "../../assets/tech360.png"
+import mgb_logo from "../../assets/MGB_logo.png"
 
 let timelineElements = [
     {

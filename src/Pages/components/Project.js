@@ -1,8 +1,8 @@
 import React from "react";
-import CriticalRaceImg from "../assets/CriticalRaceImg.png";
-import FinCheckerImg from "../assets/FinCheckerImg.png";
-import ToDoImg from "../assets/TodoImg.png";
-import WeatherPlannerImg from "../assets/WeatherPlannerImg.png";
+import CriticalRaceImg from "../../assets/CriticalRaceImg.png";
+import FinCheckerImg from "../../assets/FinCheckerImg.png";
+import ToDoImg from "../../assets/TodoImg.png";
+import WeatherPlannerImg from "../../assets/WeatherPlannerImg.png";
 
 function Project() {
     return (

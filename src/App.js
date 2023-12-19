@@ -1,19 +1,9 @@
-import Navbar from './components/Navbar';
 import './App.css';
-import Home from './components/Home';
-import Experience from './components/Experience';
-import Contact from './Pages/components/Contact';
-import Project from './components/Project';
+import Home from './Pages/Home';
 
 function App() {
   return (
-    <>
-        <Navbar />
-        <Home />
-        <Experience />
-        <Project />
-        <Contact />
-    </>
+    <Home />
   );
 }
 
