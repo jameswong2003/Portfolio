@@ -4,6 +4,7 @@ import java_svg from "../../assets/svg/java-svgrepo-com.svg";
 import Waving from "../../assets/waving.1bae5fcfb51082b5c2b4.png";
 import react_svg from "../../assets/svg/reactjs-svgrepo-com.svg"
 import mongodb_svg from "../../assets/svg/mongodb-svgrepo-com.svg"
+import resume from "../../assets/James-Wong-Resume.pdf"
 
 export default function Intro() {
     return (
@@ -18,6 +19,7 @@ export default function Intro() {
                   <p>
                     Hi! I'm James Wong. I'm an aspiring Full-Stack Software Engineer that loves to tackle innovative, fun, and explorative challenges to bring solutions to life!
                   </p>
+                  <a href={resume} target='_blank' rel='noreferrer'>Hello world</a>
                   <span>
                     <a
                       aria-label="linkedin"
@@ -34,6 +36,14 @@ export default function Intro() {
                       href="https://github.com/jameswong2003"
                     >
                       <i className="fa-brands fa-github"></i>
+                    </a>
+                    <a
+                      aria-label="resume"
+                      rel="noreferrer"
+                      target="_blank"
+                      href={resume}
+                    >
+                      <i className="fa-solid fa-file"></i>
                     </a>
                   </span>
                 </div>
