@@ -19,7 +19,6 @@ export default function Intro() {
                   <p>
                     Hi! I'm James Wong. I'm an aspiring Full-Stack Software Engineer that loves to tackle innovative, fun, and explorative challenges to bring solutions to life!
                   </p>
-                  <a href={resume} target='_blank' rel='noreferrer'>Hello world</a>
                   <span>
                     <a
                       aria-label="linkedin"
