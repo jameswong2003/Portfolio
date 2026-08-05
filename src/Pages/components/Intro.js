@@ -1,10 +1,12 @@
 import React from "react";
-import python_svg from "../../assets/svg/python-svgrepo-com.svg";
-import java_svg from "../../assets/svg/java-svgrepo-com.svg";
 import Waving from "../../assets/waving.1bae5fcfb51082b5c2b4.png";
-import react_svg from "../../assets/svg/reactjs-svgrepo-com.svg"
-import mongodb_svg from "../../assets/svg/mongodb-svgrepo-com.svg"
 import resume from "../../assets/James-Wong-Resume.pdf"
+
+const skills = [
+    "Java", "TypeScript", "Python", "Go", "JavaScript",
+    "Spring Boot", "React", "Next.js", "Node.js", "Flask",
+    "AWS", "Docker", "Kubernetes", "Kafka", "MongoDB", "Firebase"
+];
 
 export default function Intro() {
     return (
@@ -17,7 +19,7 @@ export default function Intro() {
                   <h1>Full-Stack Software Engineer</h1>
                   <img src={Waving} alt="waving_hand" />
                   <p>
-                    Hi! I'm James Wong. I'm an aspiring Full-Stack Software Engineer that loves to tackle innovative, fun, and explorative challenges to bring solutions to life!
+                    Hi! I'm James Wong. I'm a Full-Stack Software Engineer at BNY Mellon, building scalable distributed systems and enterprise microservices. I love creating impactful software that solves real-world problems.
                   </p>
                   <span>
                     <a
@@ -46,28 +48,16 @@ export default function Intro() {
                     </a>
                   </span>
                 </div>
-  
+
                 <div className="hero-img"></div>
               </div>
-  
-              {/*  */}
+
               <div className="skills">
                 <p>Tech Stack</p>
-                <div className="logos">
-                  <ul>
-                    <li>
-                      <img src={python_svg} title="Python" alt="program_img" />
-                    </li>
-                    <li>
-                      <img src={java_svg} title="Java" alt="program_img" />
-                    </li>
-                    <li>
-                      <img src={react_svg} title="React JS" alt="program_img" />
-                    </li>
-                    <li>
-                      <img src={mongodb_svg} title="MongoDB" alt="program_img" />
-                    </li>
-                  </ul>
+                <div className="skill-tags">
+                  {skills.map(skill => (
+                    <span key={skill} className="skill-tag">{skill}</span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -76,4 +66,3 @@ export default function Intro() {
       </>
     );
   }
-  
