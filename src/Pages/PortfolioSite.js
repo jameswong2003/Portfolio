@@ -131,7 +131,7 @@ function useGithubData() {
   const [state, setState] = useState(() => {
     const cached = readGithubCache();
     const stale = !cached || cached.partial || Date.now() - cached.savedAt >= 15 * 60 * 1000 || hasFallbackPushes(cached.data?.pushes);
-    return cached ? { ...cached.data, loading: stale, resolvingCommitMessages: hasFallbackPushes(cached.data?.pushes), contributionLoading: stale, error: false } : { loading: true, profile: null, pushes: [], contributions: [], contributionTotal: 0, resolvingCommitMessages: false, contributionLoading: true, error: false };
+    return cached ? { ...cached.data, loading: stale, resolvingCommitMessages: hasFallbackPushes(cached.data?.pushes), contributionLoading: stale, error: false } : { loading: true, pushes: [], contributions: [], resolvingCommitMessages: false, contributionLoading: true, error: false };
   });
   useEffect(() => {
     const cached = readGithubCache();
@@ -143,33 +143,26 @@ function useGithubData() {
     let commitTimeout = null;
     let contributionTimeout = null;
     async function load() {
-      let data = cached?.data || { profile: null, pushes: [], contributions: [], contributionTotal: 0 };
+      let data = cached?.data || { pushes: [], contributions: [] };
+      let activityAvailable = false;
+      let contributionsAvailable = false;
       try {
         const headers = { Accept: "application/vnd.github+json" };
-        const [profileResponse, eventsResult] = await Promise.all([
-          fetch(`https://api.github.com/users/${username}`, { headers, signal: requestController.signal }).catch(() => null),
-          fetch(`https://api.github.com/users/${username}/events?per_page=20`, { headers, signal: requestController.signal }).catch(() => null),
-        ]);
+        const eventsResult = await fetch(`https://api.github.com/users/${username}/events?per_page=20`, { headers, signal: requestController.signal }).catch(() => null);
         if (!active || requestController.signal.aborted) return;
-        let profile = null, pushes = data.pushes || [], eventsSucceeded = false;
-        try {
-          if (profileResponse?.ok) profile = await profileResponse.json();
-        } catch (_) { /* Keep the cached public profile data when GitHub is unavailable. */ }
+        let pushes = data.pushes || [], eventsSucceeded = false;
         try {
           if (eventsResult?.ok) {
             const events = await eventsResult.json();
             if (Array.isArray(events)) {
               pushes = mergeCachedPushes(data.pushes || [], extractPushes(events));
               eventsSucceeded = true;
+              activityAvailable = true;
             }
           }
         } catch (_) { /* Keep the cached activity when the events endpoint is unavailable. */ }
-        data = {
-          ...data,
-          profile: profile || data.profile || null,
-          pushes,
-        };
-        if (active) setState(previous => ({ ...previous, ...data, loading: hasFallbackPushes(pushes), resolvingCommitMessages: hasFallbackPushes(pushes), contributionLoading: true, error: !data.profile && !pushes.length }));
+        data = { ...data, pushes };
+        if (active) setState(previous => ({ ...previous, ...data, loading: hasFallbackPushes(pushes), resolvingCommitMessages: hasFallbackPushes(pushes), contributionLoading: true, error: false }));
         writeGithubCache(data, true);
 
         let cachePartial = true;
@@ -190,27 +183,29 @@ function useGithubData() {
           });
         }
 
-        let contributions = data.contributions || [], contributionTotal = data.contributionTotal || 0;
+        let contributions = data.contributions || [];
         contributionTimeout = window.setTimeout(() => contributionController.abort(), 8000);
         try {
           const contributionResponse = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { signal: contributionController.signal });
           if (contributionResponse.ok) {
             const contributionData = await contributionResponse.json();
-            contributions = contributionData.contributions || [];
-            contributionTotal = contributionData.total?.lastYear ?? contributions.reduce((sum, day) => sum + (day.count || 0), 0);
+            if (Array.isArray(contributionData.contributions)) {
+              contributions = contributionData.contributions;
+              contributionsAvailable = true;
+            }
           }
-        } catch (_) { /* Public profile and commit data remain useful without the calendar. */ }
+        } catch (_) { /* Cached commit data remains useful without the calendar. */ }
         finally {
           window.clearTimeout(contributionTimeout);
           if (active) {
-            const updatedData = { ...data, contributions, contributionTotal };
+            const updatedData = { ...data, contributions };
             cachePartial = false;
             writeGithubCache(updatedData, cachePartial);
-            setState(previous => ({ ...previous, ...updatedData, loading: false, contributionLoading: false, error: !updatedData.profile && !updatedData.pushes.length }));
+            setState(previous => ({ ...previous, ...updatedData, loading: false, contributionLoading: false, error: !activityAvailable && !contributionsAvailable }));
           }
         }
       } catch (_) {
-        if (active) setState(previous => ({ ...previous, loading: false, contributionLoading: false, error: !previous.profile && !previous.pushes.length }));
+        if (active) setState(previous => ({ ...previous, loading: false, contributionLoading: false, error: !activityAvailable && !contributionsAvailable }));
       }
     }
     load();

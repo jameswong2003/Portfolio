@@ -171,6 +171,7 @@
   .activity-row { grid-template-columns: minmax(0, 1fr) 50px 56px; gap: 9px; }.activity-stats { grid-column: 3; }
   .inner-page { padding-top: 33px; }.about-intro { grid-template-columns: 1fr; gap: 20px; padding: 20px; }.about-code { width: 100%; }.contact-block { align-items: start; flex-direction: column; margin-top: 38px; }.contact-details { justify-items: start; }
   .resume-toolbar { align-items: start; flex-direction: column; }.resume-viewer { height: 760px; min-height: 400px; }
+  .contrib-cell:not(.contrib-cell-empty)::after { content: none; }
 }
 @media (max-width: 460px) {
   .content-width, .footer-inner { width: calc(100% - 34px); }
